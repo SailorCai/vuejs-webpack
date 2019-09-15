@@ -1,0 +1,19 @@
+{
+  "name": "vuejs-webpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SailorCai/vuejs-webpack.git"
+  },
+  "author": "SailorCai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SailorCai/vuejs-webpack/issues"
+  },
+  "homepage": "https://github.com/SailorCai/vuejs-webpack#readme"
+}
