@@ -7,8 +7,8 @@ module.exports = {
     entry: './src/main.js',
     output: {
         path: path.resolve(__dirname, '../dist'),
-        chunkFilename: '[name].bundle.js',
-        filename: '[name].[hash:7].js',
+        chunkFilename: 'assets/[name].bundle.js',
+        filename: 'assets/[name].[hash:7].js',
     },
     plugins: [
         new VueLoaderPlugin(),
@@ -24,6 +24,10 @@ module.exports = {
             {
                 test: /\.vue$/,
                 use: 'vue-loader',
+            },
+            {
+                test: /\.(sc|sa|c)ss$/,
+                use: ['vue-style-loader','css-loader', 'postcss-loader', 'sass-loader']
             },
         ],
     },

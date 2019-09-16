@@ -2,7 +2,6 @@ const webpackBaseConf = require('./webpack.base.conf.js');
 const merge = require('webpack-merge');
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
-const loaderUtil = require('./cssLoader');
 
 module.exports = merge(webpackBaseConf, {
     mode: 'production',
@@ -12,13 +11,6 @@ module.exports = merge(webpackBaseConf, {
             template: path.resolve(__dirname, '../public/index.html'),
         }),
     ],
-    module: {
-        rules: loaderUtil.styleLoaders({
-            sourceMap: config.build.productionSourceMap,
-            extract: true,
-            usePostCSS: true,
-        }),
-    },
     optimization: {
         splitChunks: {
             chunks: 'all',
