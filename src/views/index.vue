@@ -1,7 +1,11 @@
 <template>
-    <div class="index-title">我是首页</div>
-</template>
+  <el-container>
+    <el-header>Header</el-header>
+    <el-main>Main</el-main>
+  </el-container></template>
 <script>
+import _ from 'lodash';
+
 export default {
   name: "Index",
   data () {
@@ -9,14 +13,42 @@ export default {
     };
   },
   created() {
-    console.log('this is index page');
+    console.log(_.compact([0,1,2,3,'',4,false]));
   },
 }
 </script>
 <style lang="scss" scoped>
-.index-title{
-  color: red;
-  font-size: 16px;
-  font-weight: bolder;
-}
-</style>
+  .el-header, .el-footer {
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+  }
+  
+  .el-aside {
+    background-color: #D3DCE6;
+    color: #333;
+    text-align: center;
+    line-height: 200px;
+  }
+  
+  .el-main {
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+    line-height: 160px;
+  }
+  
+  body > .el-container {
+    margin-bottom: 40px;
+  }
+  
+  .el-container:nth-child(5) .el-aside,
+  .el-container:nth-child(6) .el-aside {
+    line-height: 260px;
+  }
+  
+  .el-container:nth-child(7) .el-aside {
+    line-height: 320px;
+  }
+  </style>

@@ -1,5 +1,4 @@
 import Router from 'vue-router';
-import Index from '@/views/index.vue';
 
 let routes = [
     {
@@ -9,13 +8,18 @@ let routes = [
     {
         path: '/index',
         name: 'indexPage',
-        component: Index,
+        component: resolve => require(['@/views/index.vue'], resolve),
     },
-    /* {
+    {
+        path: '/detail',
+        name: 'indexPage',
+        component: resolve => require(['@/views/detail.vue'], resolve),
+    },
+    {
         path: '/list',
         name: 'list',
-        component: () => import('@/views/list.vue'),
-    } */
+        component: resolve => require(['@/views/list.vue'], resolve),
+    }
 ];
 
 export default new Router({

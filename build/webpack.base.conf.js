@@ -4,11 +4,14 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 // 基础webpack配置
 module.exports = {
-    entry: './src/main.js',
+    entry: {
+        main: './src/main.js',
+        entry1: './src/entry1.js'
+    },
     output: {
         path: path.resolve(__dirname, '../dist'),
-        chunkFilename: 'assets/[name].bundle.js',
-        filename: 'assets/[name].[hash:7].js',
+        filename: 'assets/[name].bundle.js',  // 决定入口chunk的文件名
+        chunkFilename: 'assets/[name].[hash:7].js',   // 决定非入口chunk的文件名
     },
     plugins: [
         new VueLoaderPlugin(),
@@ -29,6 +32,10 @@ module.exports = {
                 test: /\.(sc|sa|c)ss$/,
                 use: ['vue-style-loader','css-loader', 'postcss-loader', 'sass-loader']
             },
+            {
+                test: /\.(jp|pn|jpe)g$/,
+                use: 'url-loader'
+            }
         ],
     },
     resolve: {
