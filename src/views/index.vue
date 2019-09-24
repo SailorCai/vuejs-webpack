@@ -5,6 +5,7 @@
   </el-container></template>
 <script>
 import _ from 'lodash';
+import getParam from "@/utils/tool";
 
 export default {
   name: "Index",
@@ -14,6 +15,7 @@ export default {
   },
   created() {
     console.log(_.compact([0,1,2,3,'',4,false]));
+    var obj = getParam('http://www.baidu.com?a=1&b=2');
   },
 }
 </script>

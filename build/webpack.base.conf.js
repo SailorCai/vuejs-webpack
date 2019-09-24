@@ -1,7 +1,7 @@
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // 基础webpack配置
 module.exports = {
     entry: {
@@ -16,6 +16,7 @@ module.exports = {
     plugins: [
         new VueLoaderPlugin(),
         new CleanWebpackPlugin(),
+        new BundleAnalyzerPlugin(),
     ],
     module: {
         rules: [
