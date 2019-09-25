@@ -2,15 +2,41 @@ const webpackBaseConf = require('./webpack.base.conf.js');
 const merge = require('webpack-merge');
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = merge(webpackBaseConf, {
     mode: 'production',
     plugins: [
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+            ignoreOrder: false,
+        }),
         new htmlWebpackPlugin({
             name: 'index.html',
             template: path.resolve(__dirname, '../public/index.html'),
         }),
     ],
+    module: {
+        rules: [
+            {
+                test: /\.(sc|sa|c)ss$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            publicPath: '../',
+                            hmr: false,
+                        }
+                    }, 
+                    'vue-style-loader',
+                    'css-loader', 
+                    'postcss-loader', 
+                    'sass-loader'
+                ]
+            },
+        ]
+    },
     optimization: {
         splitChunks: {
             chunks: 'all',  // 决定哪些chunk会被优化 

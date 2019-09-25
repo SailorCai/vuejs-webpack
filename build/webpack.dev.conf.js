@@ -10,6 +10,14 @@ module.exports = merge(webpackBaseConf, {
             template: path.resolve(__dirname, '../public/index.html'),
         }),
     ],
+    module: {
+        rules: [
+            {
+                test: /\.(sc|sa|c)ss$/,
+                use: ['vue-style-loader','css-loader', 'postcss-loader', 'sass-loader']
+            },
+        ]
+    },
     devServer: {
         contentBase: path.join(__dirname, "../dist"),
         compress: true,

@@ -30,10 +30,6 @@ module.exports = {
                 use: 'vue-loader',
             },
             {
-                test: /\.(sc|sa|c)ss$/,
-                use: ['vue-style-loader','css-loader', 'postcss-loader', 'sass-loader']
-            },
-            {
                 test: /\.(jp|pn|jpe)g$/,
                 use: 'url-loader'
             }
