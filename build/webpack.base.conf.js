@@ -2,6 +2,8 @@ const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const PluginDemo = require('./plugin_demo.js');
+
 // 基础webpack配置
 module.exports = {
     entry: {
@@ -17,13 +19,23 @@ module.exports = {
         new VueLoaderPlugin(),
         new CleanWebpackPlugin(),
         new BundleAnalyzerPlugin(),
+        new PluginDemo(),
     ],
     module: {
         rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: 'babel-loader',
+                use: [{
+                    loader: 'babel-loader',
+                    options: {
+                        cacheDirectory: true
+                    }
+                }],
+            },
+            {
+                test: /\.(sc|sa|c)ss$/,
+                use: ['vue-style-loader','css-loader', 'postcss-loader', 'sass-loader']
             },
             {
                 test: /\.vue$/,

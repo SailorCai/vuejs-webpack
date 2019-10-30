@@ -12,10 +12,6 @@ module.exports = merge(webpackBaseConf, {
     ],
     module: {
         rules: [
-            {
-                test: /\.(sc|sa|c)ss$/,
-                use: ['vue-style-loader','css-loader', 'postcss-loader', 'sass-loader']
-            },
         ]
     },
     devServer: {

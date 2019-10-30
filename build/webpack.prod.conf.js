@@ -3,13 +3,16 @@ const merge = require('webpack-merge');
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 
-module.exports = merge(webpackBaseConf, {
+const smp = new SpeedMeasurePlugin();
+
+module.exports = smp.wrap(merge(webpackBaseConf, {
     mode: 'production',
     plugins: [
         new MiniCssExtractPlugin({
             filename: '[name].css',
-            chunkFilename: '[id].css',
+            chunkFilename: 'assets/css/[id].css',
             ignoreOrder: false,
         }),
         new htmlWebpackPlugin({
@@ -22,6 +25,7 @@ module.exports = merge(webpackBaseConf, {
             {
                 test: /\.(sc|sa|c)ss$/,
                 use: [
+                    'vue-style-loader',
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
@@ -29,7 +33,6 @@ module.exports = merge(webpackBaseConf, {
                             hmr: false,
                         }
                     }, 
-                    'vue-style-loader',
                     'css-loader', 
                     'postcss-loader', 
                     'sass-loader'
@@ -68,5 +71,5 @@ module.exports = merge(webpackBaseConf, {
             name: 'runtime'
         }
     },
-});
+}));
 
