@@ -34,10 +34,6 @@ module.exports = {
                 }],
             },
             {
-                test: /\.(sc|sa|c)ss$/,
-                use: ['vue-style-loader','css-loader', 'postcss-loader', 'sass-loader']
-            },
-            {
                 test: /\.vue$/,
                 use: 'vue-loader',
             },

@@ -23,9 +23,8 @@ module.exports = smp.wrap(merge(webpackBaseConf, {
     module: {
         rules: [
             {
-                test: /\.(sc|sa|c)ss$/,
+                test: /\.(sc|c)ss$/,
                 use: [
-                    'vue-style-loader',
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
@@ -56,10 +55,10 @@ module.exports = smp.wrap(merge(webpackBaseConf, {
                     test: /[\\/]node_modules[\\/]/,
                     priority: -10
                 },
-                /* elementUI: {
+                elementUI: {
                     test: /[\\/]node_modules[\\/]_element-ui/,
-                    priority: -9
-                }, */
+                    priority: -11
+                },
                 default: {
                     minChunks: 2,
                     priority: -20,
