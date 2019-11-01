@@ -15,7 +15,7 @@ export default {
   },
   methods: {
       getName() {
-          console.log('============');
+          console.log('===============');
           let arr = [1,2,3]
           console.log(_.concat(arr, 4, 5));
       },

@@ -57,7 +57,7 @@ module.exports = smp.wrap(merge(webpackBaseConf, {
                 },
                 elementUI: {
                     test: /[\\/]node_modules[\\/]_element-ui/,
-                    priority: -11
+                    priority: -9
                 },
                 default: {
                     minChunks: 2,
